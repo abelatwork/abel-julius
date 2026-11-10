@@ -1,0 +1,287 @@
+@import "tailwindcss";
+@plugin "tailwind-scrollbar";
+
+/* Both typefaces load from Google Fonts in index.html: Inter for text and
+   Material Symbols Rounded for icons. */
+
+/* PALETTE
+   The supplied hue-232 set. Dark is the default; the light half follows the OS
+   preference through prefers-color-scheme. */
+
+:root {
+  --bg-dark: oklch(0.1 0.02 232);
+  --bg: oklch(0.15 0.02 232);
+  --bg-light: oklch(0.2 0.02 232);
+  --text: oklch(0.96 0.04 232);
+  --text-muted: oklch(0.76 0.04 232);
+  --highlight: oklch(0.5 0.04 232);
+  --border: oklch(0.4 0.04 232);
+  --border-muted: oklch(0.3 0.04 232);
+  --primary: oklch(0.76 0.1 232);
+  --secondary: oklch(0.76 0.1 52);
+  --danger: oklch(0.7 0.05 30);
+  --warning: oklch(0.7 0.05 100);
+  --success: oklch(0.7 0.05 160);
+  --info: oklch(0.7 0.05 260);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-dark: oklch(0.93 0.012 232);
+    --bg: oklch(0.97 0.008 232);
+    --bg-light: oklch(1 0.004 232);
+    --text: oklch(0.18 0.03 232);
+    --text-muted: oklch(0.47 0.03 232);
+    --highlight: oklch(0.92 0.02 232);
+    --border: oklch(0.78 0.02 232);
+    --border-muted: oklch(0.89 0.015 232);
+    --primary: oklch(0.45 0.1 232);
+    --secondary: oklch(0.5 0.1 52);
+    --danger: oklch(0.5 0.05 30);
+    --warning: oklch(0.5 0.05 100);
+    --success: oklch(0.5 0.05 160);
+    --info: oklch(0.5 0.05 260);
+
+    color-scheme: light;
+  }
+}
+
+/* shadcn/ui token names mapped onto the palette. `inline` makes every utility
+   emit var(--token), so switching colour scheme needs no component changes. */
+
+@theme inline {
+  --font-sans: "Inter", sans-serif;
+
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-card: var(--bg-light);
+  --color-card-foreground: var(--text);
+  --color-muted: var(--bg-light);
+  --color-muted-foreground: var(--text-muted);
+  --color-border: var(--border-muted);
+  --color-border-strong: var(--border);
+  --color-input: var(--border-muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--bg-dark);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--bg-dark);
+  --color-accent: var(--highlight);
+  --color-accent-foreground: var(--text);
+  --color-inset: var(--bg-dark);
+  --color-ring: var(--primary);
+  --color-destructive: var(--danger);
+  --color-success: var(--success);
+  --color-info: var(--info);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--bg-dark);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border: 2px solid var(--bg-dark);
+    border-radius: 9999px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes welcome-morph-out {
+  to {
+    opacity: 0.35;
+    transform: translateY(-2rem) scale(0.94);
+  }
+}
+
+@keyframes profile-morph-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(1.5rem) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stack-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer components {
+  /* Translucent sticky bar. Kept as a class because a colour-mix on a themed
+     variable is clearer than stacking an opacity modifier on the token. */
+  .site-header {
+    background-color: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-muted);
+  }
+
+  .site-header.is-scrolled {
+    background-color: color-mix(in oklab, var(--bg) 88%, transparent);
+    border-bottom-color: var(--border-muted);
+  }
+
+  /* Match the header to the opening surface until the welcome area passes it. */
+  .site-header.is-on-hero {
+    background-color: var(--bg-dark);
+    border-bottom-color: transparent;
+  }
+
+  /* Floating mobile menu: translucent surface, blurred backdrop and an inset
+     top highlight so it reads as a layer above the page. */
+  .menu-glass {
+    background-color: color-mix(in oklab, var(--bg-light) 90%, transparent);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow:
+      0 26px 60px -28px rgba(0, 0, 0, 0.92),
+      inset 0 1px 0 color-mix(in oklab, var(--text) 9%, transparent);
+  }
+
+  .welcome-stack-track {
+    animation: stack-marquee 28s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .welcome-stack-marquee.is-in-view .welcome-stack-track {
+    animation-play-state: running;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .welcome-stack-track {
+      animation: none;
+    }
+
+    .welcome-stack-track > ul[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    @supports (animation-timeline: scroll(root block)) {
+      .welcome-morph-out {
+        animation: welcome-morph-out linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0px 60vh;
+      }
+
+      .profile-morph-in {
+        animation: profile-morph-in linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 60vh 90vh;
+      }
+    }
+  }
+
+  /* Ligature icon glyph: the element's text is the icon name, and the size
+     follows font-size so callers use a text-* utility. */
+  .material-symbols-rounded {
+    @apply size-[1em] scale-[0.85] overflow-hidden;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
+
+    &.is-filled {
+      font-variation-settings:
+        "FILL" 1,
+        "wght" 400,
+        "GRAD" 0,
+        "opsz" 24;
+    }
+  }
+
+  /* The review track scrolls and snaps; its scrollbar is visual noise. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-morph-out,
+  .profile-morph-in {
+    animation: none;
+  }
+}
