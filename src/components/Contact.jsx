@@ -22,13 +22,13 @@ const Contact = () => (
           Contact
         </h2>
 
-        <p className="mt-2 max-w-[34ch] text-[13.5px] leading-relaxed text-muted-foreground">
+        <p className="mt-2 max-w-[34ch] leading-relaxed text-muted-foreground">
           Reach out to discuss project needs and start collaborating
         </p>
 
         <a
           href={`mailto:${site.email}`}
-          className="mt-4 inline-flex items-center gap-2 text-[13.5px] transition-colors hover:text-primary animate-pulse motion-reduce:animate-none"
+          className="mt-4 inline-flex items-center gap-2 transition-colors hover:text-primary animate-pulse motion-reduce:animate-none"
         >
           <Icon name="mail" size={16} />
           Email me

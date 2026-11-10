@@ -108,31 +108,38 @@ const Reviews = () => {
         onFocus={pause}
         onBlur={resume}
         onTouchStart={pauseAfterTouch}
-        className="no-scrollbar relative mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto rounded-xl pb-1"
+        className="no-scrollbar relative mt-5 flex snap-x snap-mandatory gap-5 overflow-x-auto rounded-xl pb-2"
       >
         {reviews.map(({ id, quote, name, company, avatar, rating }) => (
           <figure
             key={id}
-            className="w-[86%] shrink-0 snap-start rounded-xl border border-border bg-card p-4 sm:w-[46%] lg:w-[31.8%]"
+            className="flex min-h-65 w-[92%] shrink-0 snap-start flex-col rounded-xl border border-border bg-card p-5 sm:w-[68%] sm:p-6 lg:w-[48%] lg:p-7"
           >
-            <Stars count={rating} />
+            <div className="flex items-center justify-between gap-4">
+              <Stars count={rating} />
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {rating} / 5
+              </span>
+            </div>
 
-            <blockquote className="mt-2.5 text-[13.5px] leading-relaxed">
+            <blockquote className="mt-5 flex-1 text-[15px] leading-7 sm:text-base">
               {quote}
             </blockquote>
 
-            <figcaption className="mt-4 flex items-center gap-2 border-t border-border pt-3">
+            <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
               <img
                 src={avatar}
-                width={28}
-                height={28}
+                width={44}
+                height={44}
                 alt=""
                 loading="lazy"
-                className="size-7 rounded-full object-cover"
+                className="size-11 rounded-full object-cover"
               />
-              <span className="text-[13px] font-medium">{name}</span>
-              <span className="text-[12px] text-muted-foreground">
-                {company}
+              <span className="flex min-w-0 flex-col gap-0.5">
+                <span className="truncate text-sm font-semibold">{name}</span>
+                <span className="truncate text-[13px] text-muted-foreground">
+                  {company}
+                </span>
               </span>
             </figcaption>
           </figure>
