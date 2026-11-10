@@ -25,7 +25,7 @@ const ProfileCard = () => (
     <div className="mt-4">
       <h2 className="text-xl font-semibold tracking-[-0.02em]">{site.name}</h2>
 
-      <p className="mt-0.5 text-[13px] text-muted-foreground">{site.role}</p>
+      <p className="mt-0.5 text-[13px] text-primary">{site.role}</p>
     </div>
 
     <p className="mt-4 max-w-[62ch] text-[13px] leading-relaxed text-muted-foreground">

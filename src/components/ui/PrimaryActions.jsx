@@ -17,7 +17,7 @@ const layouts = {
  */
 const PrimaryActions = ({ layout = "inline", className }) => (
   <div
-    className={cn("grid gap-4", layouts[layout] ?? layouts.inline, className)}
+    className={cn("grid gap-2", layouts[layout] ?? layouts.inline, className)}
   >
     <ActionLink
       href="https://flowcv.com/resume/6po7re6vsu4o"
@@ -35,7 +35,6 @@ const PrimaryActions = ({ layout = "inline", className }) => (
       className="items-center animate-pulse motion-reduce:animate-none"
       variant="outline"
       size="lg"
-      icon={<Icon name="folder" size={15} />}
     >
       View Projects
     </ActionLink>

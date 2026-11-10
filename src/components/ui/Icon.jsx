@@ -20,7 +20,7 @@ const sizes = {
  * default: callers supply the accessible label, and `size` is a font size
  * because the glyph is a font character rather than an svg.
  */
-const Icon = ({ name, size = 18, fill = false, className }) => (
+const Icon = ({ name, size, fill = false, className }) => (
   <span
     aria-hidden="true"
     className={cn(

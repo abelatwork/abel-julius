@@ -49,13 +49,13 @@ const Hero = () => (
 
       <dl className="grid grid-cols-2">
         {aboutStats.map(({ id, value, suffix, label }) => (
-          <div key={id} className="py-2 pl-4 first:pl-0">
+          <div key={id} className="pl-4 first:pl-0">
             <dd className="text-[30px] leading-none font-normal tracking-[-0.01em] tabular-nums">
               {value}
               <span className="text-primary">{suffix}</span>
             </dd>
 
-            <dt className="mt-1 text-[10px] tracking-widest text-muted-foreground uppercase">
+            <dt className="text-[10px] tracking-widest text-muted-foreground uppercase">
               {label}
             </dt>
           </div>

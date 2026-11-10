@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
             <Icon
               name="arrow_outward"
               size={15}
-              className="mt-0.5 text-muted-foreground transition-colors group-hover:text-primary"
+              className="mt-0.5 hidden text-muted-foreground transition-colors group-hover:text-primary md:block"
             />
           ) : null}
         </div>
