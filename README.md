@@ -1,8 +1,10 @@
 <div align="center">
 
-# ✨ Abel Julius
+# Hello, I'm Abel
 
-### _A responsive portfolio showcasing selected work, skills, and ways to connect._
+<!-- ## _My personal portfolio showcasing my work, skills, and ways to connect._ -->
+
+<img src="public/images/hero-banner.png" alt="Abel Julius" width="300">
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg?style=for-the-badge)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active-success?style=for-the-badge)]()
@@ -11,21 +13,6 @@
 [**Features**](#-features) · [**Getting Started**](#-getting-started) · [**Report a Bug**](https://github.com/abelatwork/abel-julius/issues) · [**Request a Feature**](https://github.com/abelatwork/abel-julius/issues)
 
 </div>
-
----
-
-## 📖 Table of Contents
-
-- [About](#-about)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Roadmap](#-roadmap)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
 
 ---
 
@@ -62,13 +49,13 @@ considerately, including reduced-motion preferences.
 
 ## 🛠 Tech Stack
 
-| Layer     | Technology                 |
-| --------- | -------------------------- |
-| Language  | JavaScript (ES modules)    |
-| UI        | React 19                   |
-| Styling   | Tailwind CSS 4             |
-| Build     | Vite 8                     |
-| Quality   | ESLint                     |
+| Layer    | Technology              |
+| -------- | ----------------------- |
+| Language | JavaScript (ES modules) |
+| UI       | React 19                |
+| Styling  | Tailwind CSS 4          |
+| Build    | Vite 8                  |
+| Quality  | ESLint                  |
 
 ---
 
